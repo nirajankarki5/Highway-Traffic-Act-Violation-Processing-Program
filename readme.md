@@ -26,3 +26,7 @@ Output:
 4. Driver's license number.
 5. Offence name, section number, and set fine, court appearance or a warning if applicable.
 6. Print the total cost for all offences.
+
+## SS
+
+![](ss.png)
