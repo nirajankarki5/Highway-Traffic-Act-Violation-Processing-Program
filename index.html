@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highway Traffic Act Violation Processing</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/script.js"></script>
+  </head>
+  <body>
+    <header><h1>OPP Traffic Officer</h1></header>
+
+    <main class="container">
+      <h2>Reason for Traffic Stop: Speeding</h2>
+
+      <form onsubmit="onSubmit()">
+        <div class="input-section">
+          <label for="name">Driver's Name:</label>
+          <input type="text" id="name" required />
+        </div>
+
+        <div class="input-section">
+          <label for="licenseNumber">Driver's License Number:</label>
+          <input type="text" id="licenseNumber" required />
+        </div>
+
+        <div class="btn">
+          <button onclick="onSubmit()">Process Offences</button>
+        </div>
+
+        <div id="details">
+          <h3>Details:</h3>
+          <div id="display-user-details">
+            <p>Date: <span id="display-date"></span></p>
+            <p>Ticket number: <span id="display-ticket"></span></p>
+            <p>Name: <span id="display-name"></span></p>
+            <p>License Number: <span id="display-license-number"></span></p>
+          </div>
+          <br />
+          <h3>Offences:</h3>
+          <h4>
+            <p>Name</p>
+            <p>Section</p>
+            <p>Fine($)</p>
+          </h4>
+          <ul id="display-offence-list">
+            <!-- Output will be displayed here -->
+          </ul>
+
+          <h2>Total fine: <span id="total-fine"></span></h2>
+          <h2 id="court-appearance"></h2>
+          <h2 id="warning-message"></h2>
+        </div>
+      </form>
+    </main>
+
+    <script type="text/javascript">
+      window.onload = () => {
+        console.log(reasons);
+
+        document.getElementById("details").style.display = "none";
+
+        // settimeout because alert loads earlier than the data(reasons) that causes error
+        setTimeout(() => {
+          // const randomNumberForReason = Math.floor(Math.random() * 3);
+          alert(
+            "Hello from Ontario Provincial Police(OPP).\nThe reason of the stop is " +
+              reasons[randomNumberForReason].name
+          );
+          // let reasonNameForVoliation = reasons[randomNumberForReason].name;
+          // let sectionForVoliation = reasons[randomNumberForReason].section;
+          // const fineForVoliation = 0;
+          if (randomNumberForReason == 0) {
+            const randomNumberForSpeedRange = Math.floor(Math.random() * 4);
+            console.log(
+              "random number for speeding range is" + randomNumberForSpeedRange
+            );
+            fineForVoliation =
+              reasons[0].community[randomNumberForSpeedRange].fine;
+            if (randomNumberForSpeedRange == 3) {
+              isWarning = true;
+            }
+          } else if (randomNumberForReason == 1) {
+            fineForVoliation = reasons[1].fine;
+          } else {
+            fineForVoliation = reasons[2].fine;
+          }
+        }, 20);
+      };
+    </script>
+
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>
